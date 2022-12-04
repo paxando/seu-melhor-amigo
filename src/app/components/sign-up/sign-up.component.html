@@ -1,0 +1,40 @@
+<div class="form-container mat-elevation-z5">
+    <h1>Cadastro</h1>
+    <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+        <mat-form-field>
+            <input matInput placeholder="Nome" formControlName="nome" />
+            <mat-error *ngIf="nome?.errors?.['required']">
+                O preenchimento do Nome é obrigatório.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Endereço de e-mail" formControlName="email" />
+            <mat-error *ngIf="email?.errors?.['required']">
+                O e-mail é obrigatório. 
+            </mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">
+                Por favor, insira um formato correto de e-mail.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Senha" formControlName="senha" type="password" />
+            <mat-error *ngIf="senha?.errors?.['required']">
+                Senha é obrigatória. 
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Confirmar senha" formControlName="confirmaSenha" type="password" />
+            <mat-error *ngIf="confirmaSenha?.errors?.['required']">
+                Confirmação de senha é obrigatória. 
+            </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+            As senhas não se correspondem. 
+        </mat-error>
+        <div class="center margin-top">
+            <button mat-raised-button color="primary" type="submit">
+                Cadastre-se!
+            </button>
+        </div>
+    </form>
+</div>
